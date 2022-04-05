@@ -1,14 +1,13 @@
 What is the need: Big Software Can be eaisly written with OOP
-
 What is a class: template
-
 Object: instance of a class for example a specific car
-
 Encapsulation: Data Hidding public class student (getEmail set Email) test class
 student s = new student s.setName s.getName
-
 Polymorphism Class Animal Pig Extends Animal: animal.AnimalSound Animal pig myPig.an
 Abstraction: you only need to run a car not the wires
+HashMap vs Hash Table: HashMap is not thread safe while Hash Table is thread safe
+ArrayList: Faster Acessing
+Linked Listed: Insetion and Deletion
 
 Selction:  Small O(N^2)
 Bubble  Large
