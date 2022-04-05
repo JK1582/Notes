@@ -8,7 +8,7 @@ public class LinkedList{
         StringBuilder str= new StringBuilder(s);
         str.append("hello");
         str.insert(0, "s");
-        str.delete(0, 1);
+        str.delete(0, str.length());
         return str.toString();
     }
     /*
