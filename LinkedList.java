@@ -3,25 +3,23 @@ import java.util.List;
 
 public class LinkedList{
     public static void main(String args[]){
-    System.out.println(threePalindromicSubstrings("pizz"));
+    System.out.println(threePalindromicSubstrings("radarnoonlevel"));
     }
     public static List<String> threePalindromicSubstrings(String word) {
         int n = word.length();
         List<String> res = new ArrayList<>();
-        int dp[] = new int[n];
         
         boolean isPal[][] = new boolean[n][n];
         
         for(int i=0;i<n;i++){
-            int min = i;
-            for(int j=0;j<=i;j++){
-                if(word.charAt(j) == word.charAt(i) && (i-j<2 || isPal[j+1][i-1])){
+            for(int j=0;j<n;j++){
+                if(word.charAt(j) == word.charAt(i)){
                     isPal[j][i] = true;
-                    min = Math.min(min, j==0 ? 0:dp[j-1]+1);
                 }
+                else
+                isPal[j][i] = false;
         
             }
-            dp[i] = min;
             
         }
         List<Integer> last = new ArrayList<>();
