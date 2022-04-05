@@ -1,16 +1,52 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class LinkedList{
     public static void main(String args[]){
-    System.out.println(Sbuilder(""));
+    System.out.println(threePalindromicSubstrings("pizz"));
     }
-    public static String Sbuilder(String s){
-        StringBuilder str= new StringBuilder(s);
-        str.append("hello");
-        str.insert(0, "s");
-        str.delete(0, str.length());
-        return str.toString();
-    }
+    public static List<String> threePalindromicSubstrings(String word) {
+        int n = word.length();
+        List<String> res = new ArrayList<>();
+        int dp[] = new int[n];
+        
+        boolean isPal[][] = new boolean[n][n];
+        
+        for(int i=0;i<n;i++){
+            int min = i;
+            for(int j=0;j<=i;j++){
+                if(word.charAt(j) == word.charAt(i) && (i-j<2 || isPal[j+1][i-1])){
+                    isPal[j][i] = true;
+                    min = Math.min(min, j==0 ? 0:dp[j-1]+1);
+                }
+        
+            }
+            dp[i] = min;
+            
+        }
+        List<Integer> last = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            if(isPal[i][n-1] == true)
+                last.add(i);
+        }
+        
+        for(int l:last){
+            for(int i=0;i<l;i++){
+                if(isPal[0][i] && isPal[i+1][l-1]){
+                    res.add(word.substring(0,i+1));
+                    res.add(word.substring(i+1,l));
+                    res.add(word.substring(l));
+                    return res;
+                }
+            }
+        }
+        
+        res.add("Impossible");
+        return res;
+        
+        
+        
+        }
     /*
     public void deleteNode(ListNode node) {
         if(node != null && node.next != null) {
